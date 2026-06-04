@@ -1,0 +1,10 @@
+* text=auto eol=lf
+
+/build export-ignore
+/tests export-ignore
+/.github export-ignore
+/.claude export-ignore
+/.env.example export-ignore
+phpstan.neon.dist export-ignore
+pint.json export-ignore
+phpunit.xml.dist export-ignore
