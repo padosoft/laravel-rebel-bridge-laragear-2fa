@@ -7,16 +7,16 @@ use Padosoft\Rebel\Bridge\Laragear2fa\RebelLaragear2faBridgeServiceProvider;
 use Padosoft\Rebel\Bridge\Laragear2fa\Support\LaragearBridge;
 use Padosoft\Rebel\StepUp\DriverRegistry;
 
+it('detects laragear via its interface contract (not class_exists)', function (): void {
+    // laragear/two-factor is a require-dev dependency, so it is ALWAYS installed in the
+    // test/CI environment. installed() MUST return true — a class_exists() check on the
+    // (interface) contract would wrongly return false and silently disable the bridge.
+    expect(LaragearBridge::installed())->toBeTrue();
+});
+
 it('registers the laragear_totp driver when config-enabled and laragear installed', function (): void {
-    // The TestCase binds FakeTwoFactorValidator, but the driver registration is
-    // feature-gated on LaragearBridge::installed(). In CI laragear IS installed
-    // (require-dev), so we expect the driver to be registered.
-    if (! LaragearBridge::installed()) {
-        expect(app(DriverRegistry::class)->get('laragear_totp'))->toBeNull();
-
-        return;
-    }
-
+    // laragear IS installed in CI (require-dev), so the driver MUST be registered.
+    // (No escape hatch: this assertion has to be able to FAIL if detection regresses.)
     expect(app(DriverRegistry::class)->get('laragear_totp'))->not->toBeNull();
 });
 
