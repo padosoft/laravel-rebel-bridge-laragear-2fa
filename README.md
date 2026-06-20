@@ -1,3 +1,5 @@
+> Official documentation: https://doc.laravel-rebel.padosoft.com
+
 ![Laravel Rebel](resources/screenshoots/Laravel-Rebel-banner.png)
 
 # laravel-rebel-bridge-laragear-2fa
@@ -355,3 +357,4 @@ MIT — see [LICENSE](LICENSE).
 Built by [Padosoft](https://www.padosoft.com). Part of the [Laravel Rebel](https://github.com/padosoft/laravel-rebel-auth) enterprise authentication suite.
 
 Uses [laragear/two-factor](https://github.com/Laragear/TwoFactor) by Italo Israel Baeza Cabrera.
+
